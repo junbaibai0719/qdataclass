@@ -6,8 +6,9 @@ from PySide6.QtCore import QByteArray, QObject, QUrl
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlEngine, qmlRegisterType, QQmlApplicationEngine
 
-from qdataclass import qDataClass
+from qdataclass import qDataClass,registerQmlType
 
+@registerQmlType("testclass")
 @qDataClass
 class TestClass(QObject):
     p0:str
@@ -37,7 +38,6 @@ t.p0 = "123456"
 t.p1 = 123456
 t.p2 = 123456.123456
 # %%
-qmlRegisterType(TestClass, "testclass", 1, 0, "TestClass")
 
 app = QGuiApplication(sys.argv)
 
