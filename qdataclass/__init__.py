@@ -1,0 +1,1 @@
+from .qdataclass import qDataClass
