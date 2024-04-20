@@ -29,6 +29,8 @@ def _process_cls(cls: type):
         raise Exception("Class must be a QObject")
     ann = cls.__annotations__
     for prop_name, prop_type in ann.items():
+        if hasattr(cls, prop_name):
+            continue
         if prop_type in {Property, Signal}:
             continue
         getter, setter = _getter_setter(prop_name)
