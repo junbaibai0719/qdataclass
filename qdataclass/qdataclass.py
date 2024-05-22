@@ -37,7 +37,7 @@ def _process_cls(cls: type):
         signal = Signal(prop_type)
         setattr(cls, prop_name+"Changed", signal)
         setattr(cls, prop_name, Property(
-            prop_type, getter, setter, notify=signal))
+            prop_type, getter, setter, notify=signal)) # type: ignore
     new_class = types.new_class(
         cls.__name__, cls.__bases__, exec_body=lambda ns: ns.update(cls.__dict__))
     sys.modules[cls.__module__].__dict__[cls.__name__] = new_class
